@@ -25,6 +25,14 @@ const Footer = () => (
                     </div>
                 </div>
             </RouteLink>
+            <div className="internal-links">
+                <RouteLink to={routes.IndexPage.path}>
+                    {routes.IndexPage.title}
+                </RouteLink>
+                <RouteLink to={routes.FavoritesPage.path}>
+                    {routes.FavoritesPage.title}
+                </RouteLink>
+            </div>
             <div className="tmdb-container">
                 <p>Powered by:</p>
                 <a href="https://www.themoviedb.org/">

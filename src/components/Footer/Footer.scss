@@ -4,7 +4,7 @@
     grid-area: footer;
     background-color: #ececec;
     box-shadow: 0px -1px 5px rgba(150, 150, 150, 0.5);
-    padding: 1em 1.5em;
+    padding: 2em 1em;
     .width-container {
         display: flex;
         flex-direction: column;
@@ -12,7 +12,6 @@
         align-items: center;
     }
     .tma-container {
-        margin-bottom: 1em;
         display: flex;
         flex-direction: column-reverse;
         .images {
@@ -28,6 +27,15 @@
             color: gray;
         }
     }
+    .internal-links {
+        margin: 1em 0em 2em 0em;
+        display: flex;
+        a {
+            font-size: 1.125em;
+            margin: 0.5rem;
+            font-style: italic;
+        }
+    }
     .tmdb-container {
         .tmdb-logo {
             margin-top: 0.75em;
@@ -36,14 +44,33 @@
     }
 }
 
-@media screen and (min-width: constants.$breakpoint-1) {
+@media screen and (min-width: constants.$breakpoint-2) {
     #footer {
+        padding: 1em;
         .width-container {
             flex-direction: row;
             justify-content: space-between;
         }
+        .internal-links {
+            margin: 0;
+            flex-direction: column;
+            a {
+                margin: 0.25rem;
+            }
+        }
         .tma-container {
             margin-bottom: 0;
+        }
+    }
+}
+
+@media screen and (min-width: constants.$breakpoint-3) {
+    #footer {
+        .internal-links {
+            flex-direction: row;
+            a {
+                margin: 1rem;
+            }
         }
     }
 }
