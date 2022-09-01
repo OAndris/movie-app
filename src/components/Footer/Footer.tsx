@@ -4,6 +4,7 @@ import ManPopcorn from '../../assets/man-popcorn.svg';
 import WomanPopcorn from '../../assets/woman-popcorn.svg';
 import routes from '../../pages/routes';
 import RouteLink from '../RouteLink/RouteLink';
+import Image from '../Image/Image';
 
 const Footer = () => (
     <footer id="footer">
@@ -12,12 +13,12 @@ const Footer = () => (
                 <div className="tma-container">
                     <p className="title">The Movie App</p>
                     <div className="images">
-                        <img
+                        <Image
                             src={ManPopcorn}
                             alt="Man with popcorn and 3D glasses"
                             className="image"
                         />
-                        <img
+                        <Image
                             src={WomanPopcorn}
                             alt="Woman with popcorn and 3D glasses"
                             className="image"
@@ -27,7 +28,11 @@ const Footer = () => (
             </RouteLink>
             <div className="internal-links">
                 {Object.keys(routes).map((route) => (
-                    <RouteLink to={routes[route].path} color="black">
+                    <RouteLink
+                        key={route}
+                        to={routes[route].path}
+                        color="black"
+                    >
                         {routes[route].title}
                     </RouteLink>
                 ))}
@@ -35,7 +40,7 @@ const Footer = () => (
             <div className="tmdb-container">
                 <p>Powered by:</p>
                 <a href="https://www.themoviedb.org/">
-                    <img
+                    <Image
                         src={TmdbLogo}
                         alt="Logo of the movie data provider (TheMovieDb.org)."
                         className="tmdb-logo"

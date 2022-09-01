@@ -1,9 +1,11 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './Header.scss';
+import Popcorn from '../../assets/popcorn.svg';
 import routes from '../../pages/routes';
 import { Route } from '../../models/models';
 import RouteLink from '../RouteLink/RouteLink';
+import Image from '../Image/Image';
 
 const RouteItem: React.FC<Route> = ({ path, title }) => {
     const isActive = path === useLocation().pathname;
@@ -28,11 +30,14 @@ const Header = () => {
     return (
         <header id="header">
             <div className="width-container">
-                <h1 className="title">
-                    <RouteLink to={routes.IndexPage.path} color="white">
-                        The Movie App
-                    </RouteLink>
-                </h1>
+                <div className="logo">
+                    <Image src={Popcorn} alt="popcorn" className="image" />
+                    <h1 className="title">
+                        <RouteLink to={routes.IndexPage.path} color="white">
+                            The Movie App
+                        </RouteLink>
+                    </h1>
+                </div>
                 <nav id="route-nav">
                     <ul className="route-list">{routeItems}</ul>
                 </nav>

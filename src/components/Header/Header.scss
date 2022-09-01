@@ -13,10 +13,19 @@
         align-items: center;
         justify-content: space-between;
     }
-    .title {
-        margin-bottom: 0.125em;
-        .link {
-            color: $header-color;
+    .logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.75em;
+        .image {
+            width: 1.75em;
+            margin-right: 0.5em;
+        }
+        .title {
+            font-size: 1.875rem;
+            .link {
+                color: $header-color;
+            }
         }
     }
 
@@ -25,7 +34,7 @@
         list-style-type: none;
         .route-item {
             display: flex;
-            margin: 0em 1.25em;
+            margin: 0em 1em;
             text-align: center;
             color: $header-color;
             .link {
@@ -49,10 +58,19 @@
         padding: 1em 0.75em;
         .width-container {
             flex-direction: row;
+            justify-content: flex-start;
         }
-        .title {
+        .logo {
             margin: 0;
-            font-size: 1.25em;
+            .image {
+                margin-right: 0.5em;
+            }
+            .title {
+                font-size: 1.25em;
+            }
+        }
+        #route-nav {
+            margin-left: auto;
         }
     }
 }

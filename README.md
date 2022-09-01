@@ -54,3 +54,11 @@ Notable checkpoints:
 -   Pagination, limits
 -   Adding movies to favorites, stored locally, refreshing automatically
 -   Displaying favorites in the list and on a different part of the screen (eg right side or top)
+
+## Useful links:
+
+-   https://www.themoviedb.org/
+-   https://www.themoviedb.org/about/logos-attribution
+-   https://developers.themoviedb.org/3/getting-started/introduction
+-   https://www.reshot.com/free-svg-icons
+-   https://react-icons.github.io/react-icons/
