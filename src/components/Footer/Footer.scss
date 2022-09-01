@@ -1,9 +1,49 @@
+@use '../../assets/constants';
+
 #footer {
     grid-area: footer;
-    background-color: lightgray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.25em 1em;
-    box-shadow: 0px -1px 5px rgba(128, 128, 128, 0.8);
+    background-color: #ececec;
+    box-shadow: 0px -1px 5px rgba(150, 150, 150, 0.5);
+    padding: 1em 1.5em;
+    .width-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .tma-container {
+        margin-bottom: 1em;
+        display: flex;
+        flex-direction: column-reverse;
+        .images {
+            display: flex;
+            justify-content: center;
+            .image {
+                width: 3.5em;
+                margin: 0em -0.25em;
+            }
+        }
+        .title {
+            font-size: 1.375rem;
+            color: gray;
+        }
+    }
+    .tmdb-container {
+        .tmdb-logo {
+            margin-top: 0.75em;
+            width: 300px;
+        }
+    }
+}
+
+@media screen and (min-width: constants.$breakpoint-1) {
+    #footer {
+        .width-container {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .tma-container {
+            margin-bottom: 0;
+        }
+    }
 }
