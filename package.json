@@ -20,13 +20,13 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
-        "snyk": "snyk test --all-projects",
         "start": "react-scripts start",
-        "serve": "yarn build && serve -s build",
         "build": "react-scripts build",
+        "start-prod": "yarn build && serve -s build",
         "test": "react-scripts test",
-        "test-coverage": "yarn test --coverage --watchAll=false",
-        "e2e": "TODO"
+        "test-cov": "yarn test --coverage --watchAll=false && start coverage/lcov-report/index.html",
+        "e2e": "TODO",
+        "snyk": "snyk test"
     },
     "eslintConfig": {
         "extends": [

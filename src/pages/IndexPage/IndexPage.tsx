@@ -55,7 +55,7 @@ const IndexPage = () => {
 
     return (
         <article className="index-page">
-            <h2>Find your new favorites!</h2>
+            <h2>Find the movies you love!</h2>
             <Searchbox
                 searchString={searchString}
                 setSearchString={setSearchString}
