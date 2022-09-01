@@ -1,0 +1,30 @@
+@import '../../assets/mixins';
+
+.search-suggestions {
+    margin-top: 0.75em;
+    width: 100%;
+    padding: 0.5em;
+
+    $color: rgba(150, 150, 150, 0.5);
+    border: 1px solid $color;
+    box-shadow: 0px 0px 5px $color;
+    border-radius: 0.75em;
+
+    &.loading {
+        background-color: rgba(240, 240, 240, 0.5);
+    }
+
+    .list {
+        list-style-type: none;
+        max-height: 25em;
+        overflow-y: auto;
+        @include mixin-fancy-scrollbar(lightgray, 8px);
+    }
+
+    position: relative;
+    .spinner {
+        position: absolute;
+        left: 50%;
+        transform: translate(calc(-50% - 1em), -0.5em);
+    }
+}

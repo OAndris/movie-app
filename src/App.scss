@@ -1,0 +1,43 @@
+@import './assets/variables';
+
+#root {
+    min-height: 100vh;
+    background: radial-gradient(
+        rgba(255, 255, 255, 1) 0%,
+        rgba(250, 250, 250, 1) 50%,
+        rgba(235, 235, 235, 1) 100%
+    );
+    line-height: 1.5;
+    text-align: center;
+
+    h1 {
+        font-family: 'Times New Roman', Times, serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: lighter;
+    }
+    h2 {
+        font-weight: bolder;
+        font-style: italic;
+        color: #838383;
+        margin: 0.75em 0em 1.25em 0em;
+    }
+    a:visited {
+        color: initial;
+    }
+
+    #main {
+        grid-area: main;
+        padding: 1.25em;
+        padding-bottom: 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    display: grid;
+    grid-template:
+        'header' min-content
+        'main' 1fr
+        'footer' min-content;
+}

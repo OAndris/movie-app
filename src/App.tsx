@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import './App.scss';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import routes from './pages/routes';
+import IndexPage from './pages/IndexPage/IndexPage';
+import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
+import { FavoritesProvider } from './contexts/FavoritesContext';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <>
+            <Header />
+            <main id="main">
+                <FavoritesProvider>
+                    <Routes>
+                        <Route
+                            path={routes.IndexPage.path}
+                            element={<IndexPage />}
+                        />
+                        <Route
+                            path={routes.FavoritesPage.path}
+                            element={<FavoritesPage />}
+                        />
+                    </Routes>
+                </FavoritesProvider>
+            </main>
+            <Footer />
+        </>
+    );
+};
 
 export default App;

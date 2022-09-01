@@ -1,0 +1,5 @@
+@import '../../assets/mixins';
+
+.index-page {
+    @include mixin-width;
+}

@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# Developer Documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Please refer to the "Quick Guide" section of this README file for every necessary information to run the code and tests.
 
-## Available Scripts
+## Quick Guide:
 
-In the project directory, you can run:
+**Setup & Security:**
 
-### `npm start`
+`yarn install` - install dependencies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`yarn audit` - scan dependencies for known security issues and vulnerabilities
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`yarn snyk` - run Snyk to scan dependencies for known security issues and vulnerabilities (initial setup requires synk to be installed globally, plus authentication)
 
-### `npm test`
+**Start:**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`yarn start` - start development version locally
 
-### `npm run build`
+`yarn serve` - generate production build and start it locally
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Build:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`yarn build` - generate production build
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Testing:**
 
-### `npm run eject`
+`yarn test` - run all unit tests and UI Component tests (Jest + Jest-DOM)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`yarn test {fileName}` - run a specific test file, e.g. `utils.test.ts` with `yarn test utils` (or `App.test.tsx` with `yarn test App.test`)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`yarn test-coverage` - run unit tests (Jest) and generate coverage report
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`yarn e2e` - run E2E tests (Cypress)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Deployment:**
 
-## Learn More
+The `main` branch is being monitored and deployed automatically on Netlify.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Application Description:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The task is to create a simple Typescript React UI that has an input box. Upon pressing a button, it queries movies using the value of the input, through an external api and displays the results in a list.
+
+The recommended api is "The Movie Database" (https://developers.themoviedb.org/3/search/search-movies - registration required).
+
+If you encounter any issues querying that api, any json or graphql one with similar functionalities can be used.
+
+Notable checkpoints:
+
+-   Testing (any framework, any level)
+-   Loading spinner
+-   Search is automatically triggered after at least 3 characters entered
+-   Search by pressing ENTER
+-   Caching
+-   Pagination, limits
+-   Adding movies to favorites, stored locally, refreshing automatically
+-   Displaying favorites in the list and on a different part of the screen (eg right side or top)
