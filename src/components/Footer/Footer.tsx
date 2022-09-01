@@ -26,12 +26,11 @@ const Footer = () => (
                 </div>
             </RouteLink>
             <div className="internal-links">
-                <RouteLink to={routes.IndexPage.path}>
-                    {routes.IndexPage.title}
-                </RouteLink>
-                <RouteLink to={routes.FavoritesPage.path}>
-                    {routes.FavoritesPage.title}
-                </RouteLink>
+                {Object.keys(routes).map((route) => (
+                    <RouteLink to={routes[route].path} color="black">
+                        {routes[route].title}
+                    </RouteLink>
+                ))}
             </div>
             <div className="tmdb-container">
                 <p>Powered by:</p>

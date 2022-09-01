@@ -12,7 +12,7 @@ interface Props {
 const RouteLink: React.FC<Props> = ({ to, color, className, children }) => (
     <Link
         to={to}
-        style={{ color }}
+        style={color ? { color } : null}
         className={'route-link' + (className ? ` ${className}` : '')}
     >
         {children}
