@@ -1,4 +1,4 @@
-@import '../../assets/mixins';
+@use '../../assets/mixins';
 
 .search-suggestions {
     margin-top: 0.75em;
@@ -18,7 +18,7 @@
         list-style-type: none;
         max-height: 25em;
         overflow-y: auto;
-        @include mixin-fancy-scrollbar(lightgray, 8px);
+        @include mixins.mixin-fancy-scrollbar(lightgray, 8px);
     }
 
     position: relative;

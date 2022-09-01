@@ -1,5 +1,5 @@
-@import '../../assets/mixins';
+@use '../../assets/mixins';
 
 .index-page {
-    @include mixin-width;
+    @include mixins.mixin-width;
 }

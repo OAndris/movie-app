@@ -1,14 +1,14 @@
-@import './assets/variables';
+@use './assets/constants';
 
 #root {
-    min-height: 100vh;
-    background: radial-gradient(
-        rgba(255, 255, 255, 1) 0%,
-        rgba(250, 250, 250, 1) 50%,
-        rgba(235, 235, 235, 1) 100%
-    );
     line-height: 1.5;
     text-align: center;
+    min-height: 100vh;
+
+    .width-container {
+        max-width: 120em;
+        margin: auto;
+    }
 
     h1 {
         font-family: 'Times New Roman', Times, serif;
@@ -21,6 +21,9 @@
         font-style: italic;
         color: #838383;
         margin: 0.75em 0em 1.25em 0em;
+        @media screen and (min-width: constants.$breakpoint-1) {
+            font-size: 2em;
+        }
     }
     a:visited {
         color: initial;
@@ -33,11 +36,16 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        background: radial-gradient(
+            rgba(255, 255, 255, 1) 0%,
+            rgba(250, 250, 250, 1) 50%,
+            rgba(235, 235, 235, 1) 100%
+        );
     }
 
     display: grid;
     grid-template:
         'header' min-content
-        'main' 1fr
+        'main' minmax(30em, 1fr)
         'footer' min-content;
 }

@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
 import './FavoritesPage.scss';
 import { useFavorites } from '../../contexts/FavoritesContext';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import routes from '../../pages/routes';
+import RouteLink from '../../components/RouteLink/RouteLink';
 
 //====================================
 const movies = [
@@ -45,8 +45,10 @@ const FavoritesPage = () => {
                 <p>It seems like you don't have any favorites yet!</p>
             )}
             <p>
-                <Link to={routes.IndexPage.path}>Search for movies</Link> and
-                discover something new!
+                <RouteLink to={routes.IndexPage.path} className="link">
+                    Search for movies
+                </RouteLink>{' '}
+                and discover something new!
             </p>
         </article>
     );

@@ -1,7 +1,8 @@
-@import '../../assets/mixins';
+@use '../../assets/mixins';
+@use '../../assets/constants';
 
 .favorites-page {
-    @include mixin-width;
+    @include mixins.mixin-width;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,5 +12,11 @@
         margin-bottom: 2.5em;
         box-shadow: 1px 1px 12px rgba(128, 128, 128, 0.35);
         border-radius: 0.75em;
+    }
+    .link {
+        text-decoration: underline;
+        &:hover {
+            text-shadow: 0px 0px 1px rgba(128, 128, 128, 0.5);
+        }
     }
 }
