@@ -26,12 +26,12 @@ const IndexPage = () => {
         }
     }, [searchString]);
 
-    const fetchMovies = async () => {
+    const fetchMovies = async (searchString: string) => {
         setIsFetching(true);
         const movies = await getMoviesByQuery(searchString, 1);
         setMovies(movies);
         setIsFetching(false);
-    }; // TODO - the fetchMovies passed to SearchSuggestions sees the previous value of searchString
+    };
 
     const shouldShowSuggestions = movies.length > 0;
     const shouldShowSpinner = isFetching && !shouldShowSuggestions;

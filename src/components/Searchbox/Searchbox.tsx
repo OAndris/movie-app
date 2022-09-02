@@ -9,7 +9,7 @@ import {
 interface Props {
     searchString: string;
     setSearchString: React.Dispatch<React.SetStateAction<string>>;
-    fetchMovies: () => void;
+    fetchMovies: (newSearchString: string) => void;
 }
 
 const Searchbox: React.FC<Props> = ({
@@ -18,18 +18,24 @@ const Searchbox: React.FC<Props> = ({
     fetchMovies,
 }) => {
     const [debounceTimer, setDebounceTimer] = useState<NodeJS.Timeout>();
+
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newSearchString = e.target.value;
         setSearchString(newSearchString);
         if (newSearchString.length >= MIN_CHAR_NUM_TO_AUTO_TRIGGER_FETCH) {
             clearTimeout(debounceTimer);
-            setDebounceTimer(setTimeout(fetchMovies, DEBOUNCE_TIME_IN_MS));
+            setDebounceTimer(
+                setTimeout(
+                    () => fetchMovies(newSearchString),
+                    DEBOUNCE_TIME_IN_MS
+                )
+            );
         }
     };
 
     const onFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        fetchMovies();
+        fetchMovies(searchString);
     };
 
     return (
