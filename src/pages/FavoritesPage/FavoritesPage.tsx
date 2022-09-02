@@ -48,11 +48,11 @@ const FavoritesPage = () => {
             {!isFetching && favoriteMovies.length === 0 && (
                 <p>It seems like you don't have any favorites yet!</p>
             )}
-            <p>
+            <p className="cta">
                 <RouteLink to={routes.IndexPage.path} className="link">
-                    Search for movies
+                    Discover the best movies
                 </RouteLink>{' '}
-                and discover something new!
+                and add them to your favorites!
             </p>
         </article>
     );

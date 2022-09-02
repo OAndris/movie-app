@@ -74,3 +74,9 @@
         }
     }
 }
+
+@media screen and (min-width: constants.$breakpoint-2) {
+    #header {
+        padding: 1em;
+    }
+}

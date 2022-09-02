@@ -1,6 +1,6 @@
 @mixin mixin-width {
     width: max(20em, 80vw);
-    max-width: 33em;
+    max-width: 40em;
 }
 
 @mixin mixin-fancy-scrollbar($color, $width: 6px) {
