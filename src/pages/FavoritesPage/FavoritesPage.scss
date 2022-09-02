@@ -1,8 +1,6 @@
-@use '../../assets/mixins';
 @use '../../assets/constants';
 
 .favorites-page {
-    @include mixins.mixin-width;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,8 +9,12 @@
         list-style-type: none;
         width: 100%;
         margin-bottom: 2.5em;
-        box-shadow: 1px 1px 12px rgba(128, 128, 128, 0.35);
-        border-radius: 0.75em;
+        display: grid;
+        gap: 1em;
+        grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+        @media screen and (min-width: 1000px) {
+            grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+        }
     }
     .link {
         text-decoration: underline;

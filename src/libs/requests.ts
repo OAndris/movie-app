@@ -46,13 +46,12 @@ export const getMovieById = async (id: number) => {
             'title',
             'overview',
             'runtime',
-            // 'genres',
+            'genres',
             'release_date',
             'vote_average',
-            // 'homepage',
-            // 'imdb_id',
-            // 'poster_path',
-            // 'backdrop_path',
+            'homepage',
+            'imdb_id',
+            'poster_path',
         ]);
     } catch (error) {
         handleError(error);
