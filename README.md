@@ -2,9 +2,13 @@
 
 Please refer to the "Quick Guide" section of this README file for every necessary information to run the code and tests.
 
+Please note that in case of a real application, the (TMDB) API key should be moved to server-side code (it's not safe on the client-side).
+
 ## Quick Guide:
 
 **Setup:**
+
+Create a `.env.local` file inside the root folder (next to `package.json`) and paste `REACT_APP_TMDB_API_KEY={MY_API_KEY}` into it, using your TMDB API key.
 
 `yarn install` - install dependencies
 
@@ -24,7 +28,7 @@ Please refer to the "Quick Guide" section of this README file for every necessar
 
 `yarn test-cov` - run unit tests (Jest) and generate coverage report
 
-`yarn e2e` - run E2E tests (Cypress)
+`yarn e2e` - !!! TODO, NOT YET WORKING !!! - run E2E tests (Cypress)
 
 **Security - check for vulnerabilities in dependencies:**
 
