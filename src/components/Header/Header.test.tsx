@@ -10,7 +10,7 @@ beforeEach(() => {
     );
 });
 
-test('renders 2 routes for navigation', () => {
+test('renders 2+1 routes for navigation (including clickable logo)', () => {
     const links = screen.getAllByRole('link');
-    expect(links.length).toEqual(2);
+    expect(links.length).toEqual(3);
 });
