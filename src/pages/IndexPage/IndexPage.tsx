@@ -12,11 +12,11 @@ const INITIAL_MOVIES: Movie[] = [];
 
 const IndexPage = () => {
     const [searchString, setSearchString] = useState(''); // implicit type definition based on the init value's type
-    const [pageNumToFetch, setPageNumToFetch] = useState(1);
+    // const [pageNumToFetch, setPageNumToFetch] = useState(1);
     const [isFetching, setIsFetching] = useState(false);
 
     const [movies, setMovies] = useState(INITIAL_MOVIES);
-    const [totalPages, setTotalPages] = useState(0);
+    // const [totalPages, setTotalPages] = useState(0);
     const [totalResults, setTotalResults] = useState(0);
 
     useEffect(() => {
@@ -36,12 +36,13 @@ const IndexPage = () => {
             return;
         }
         setIsFetching(true);
-        const { movies, total_pages, total_results } = await getMoviesByQuery(
+        // const { movies, total_pages, total_results } = await getMoviesByQuery(
+        const { movies, total_results } = await getMoviesByQuery(
             searchString,
-            pageNumToFetch
+            1
         );
         setMovies(movies);
-        setTotalPages(total_pages);
+        // setTotalPages(total_pages);
         setTotalResults(total_results);
         setIsFetching(false);
     };
