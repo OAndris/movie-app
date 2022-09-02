@@ -16,7 +16,8 @@
 
     .list {
         list-style-type: none;
-        max-height: 25em;
+        min-height: 12em;
+        max-height: 26em;
         overflow-y: auto;
         @include mixins.mixin-fancy-scrollbar(lightgray, 8px);
     }

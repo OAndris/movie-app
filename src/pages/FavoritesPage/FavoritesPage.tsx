@@ -17,13 +17,14 @@ const FavoritesPage = () => {
 
     useEffect(() => {
         const fetchFavoriteMovies = async () => {
+            setIsFetching(true);
             const promises = favorites.map((id: number) => getMovieById(id));
             const favMoviesArray = await Promise.all(promises);
             setFavoriteMovies(favMoviesArray);
             setIsFetching(false);
         };
         fetchFavoriteMovies();
-    }, []);
+    }, [favorites]);
 
     return (
         <article className="favorites-page">

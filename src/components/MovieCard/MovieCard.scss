@@ -1,13 +1,12 @@
+@use '../../assets/constants';
+
 .search-suggestion {
-    padding: 0.75em;
-    padding-left: 1em;
-    display: flex;
-    align-items: center;
+    cursor: pointer;
     &:not(:first-child) {
         border-top: 1px solid lightgray;
     }
     &:hover {
-        background-color: rgba(200, 200, 200, 0.1);
+        background-color: rgba(200, 200, 200, 0.2);
     }
     &:first-child {
         border-radius: 0.5em 0.5em 0em 0em;
@@ -16,17 +15,71 @@
         border-radius: 0em 0em 0.5em 0.5em;
     }
 
-    .icon {
-        margin-left: auto;
-        cursor: pointer;
+    .row {
+        padding: 0.75em;
+        padding-left: 1em;
         display: flex;
         align-items: center;
-        justify-content: center;
-        padding: 0.5em;
-        border-radius: 50%;
-        &:hover {
-            background-color: rgba(180, 180, 180, 0.15);
-            box-shadow: 0px 0px 1px gray;
+
+        $icon-width: 2em;
+        $score-margin-left: 0.25em;
+        $score-width: 1.125em;
+        .title {
+            text-align: start;
+            max-width: calc(
+                100% - $icon-width - $score-margin-left - $score-width
+            );
+        }
+        .icon {
+            cursor: pointer;
+            margin-left: auto;
+            width: $icon-width;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5em;
+            border-radius: 50%;
+            &:hover {
+                background-color: rgba(180, 180, 180, 0.15);
+                box-shadow: 0px 0px 1px gray;
+            }
+        }
+        .score {
+            color: constants.$gray;
+            margin-left: $score-margin-left;
+            width: $score-width;
+        }
+    }
+
+    position: relative;
+    .hover-container {
+        position: absolute;
+        top: 0%;
+        pointer-events: none;
+        display: grid;
+        overflow: hidden;
+        font-size: 0.875em;
+        margin-right: min(20%, 8em);
+        .hover-content {
+            z-index: 1;
+            position: relative;
+            pointer-events: none;
+            margin-top: 1em;
+            padding: 0.5em;
+            border-radius: 0.5em;
+            box-shadow: inset 0px 0px 4px constants.$gray;
+            background-color: constants.$tertiary-color;
+            transition-delay: 0s;
+            transition: 0.3s;
+            opacity: 0;
+        }
+    }
+    &:hover {
+        .hover-container {
+            .hover-content {
+                transition-delay: 0.8s;
+                opacity: 1;
+            }
         }
     }
 }

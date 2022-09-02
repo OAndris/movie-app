@@ -19,7 +19,7 @@
     h2 {
         font-weight: bolder;
         font-style: italic;
-        color: #838383;
+        color: constants.$gray;
         margin: 0.75em 0em 1.25em 0em;
         @media screen and (min-width: constants.$breakpoint-1) {
             font-size: 2em;
