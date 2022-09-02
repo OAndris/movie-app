@@ -6,7 +6,7 @@ export const convertMinutesToHoursAndMinutes = (minutes: number) => {
 };
 
 export const mergeObjValuesToKeys = (
-    obj: { [key: string]: unknown },
+    obj: { [key: string]: any },
     usefulKeys: string[]
 ): { [key: string]: unknown } => {
     return usefulKeys.reduce((subsetObj, key) => {

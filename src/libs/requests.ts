@@ -18,10 +18,12 @@ const ENDPOINTS = {
 export const getMoviesByQuery = async (query: string, page: number) => {
     // Example: https://api.themoviedb.org/3/search/movie?query=game%20of%20thrones&page=1&api_key=SECRET
     let movies: Movie[] = []; // initialize output as a kind of "null object" to let other parts of the app reference it even if the request fails
+    let total_pages = 0;
+    let total_results = 0;
     const params = { query, page };
     try {
         const { data } = await api.get(ENDPOINTS.MOVIES_BY_QUERY, { params });
-        movies = data.results.map((movie) =>
+        movies = data.results.map((movie: Movie) =>
             mergeObjValuesToKeys(movie, [
                 'id',
                 'title',
@@ -30,10 +32,12 @@ export const getMoviesByQuery = async (query: string, page: number) => {
                 'release_date',
             ])
         );
+        total_pages = data.total_pages;
+        total_results = data.total_results;
     } catch (error) {
         handleError(error);
     }
-    return movies;
+    return { movies, total_pages, total_results };
 };
 
 export const getMovieById = async (id: number) => {

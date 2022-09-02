@@ -2,7 +2,7 @@
 
 #footer {
     grid-area: footer;
-    background-color: #e4e4e4;
+    background-color: constants.$light-gray;
     box-shadow: 0px -1px 5px rgba(150, 150, 150, 0.5);
     padding: 2em 1em;
     .width-container {

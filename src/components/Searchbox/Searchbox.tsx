@@ -10,12 +10,14 @@ interface Props {
     searchString: string;
     setSearchString: React.Dispatch<React.SetStateAction<string>>;
     fetchMovies: (newSearchString: string) => void;
+    setIsFetching: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Searchbox: React.FC<Props> = ({
     searchString,
     setSearchString,
     fetchMovies,
+    setIsFetching,
 }) => {
     const [debounceTimer, setDebounceTimer] = useState<NodeJS.Timeout>();
 
@@ -23,6 +25,7 @@ const Searchbox: React.FC<Props> = ({
         const newSearchString = e.target.value;
         setSearchString(newSearchString);
         if (newSearchString.length >= MIN_CHAR_NUM_TO_AUTO_TRIGGER_FETCH) {
+            setIsFetching(true); // indicate loading immediately, otherwise UI may be inconsistent for a moment
             clearTimeout(debounceTimer);
             setDebounceTimer(
                 setTimeout(

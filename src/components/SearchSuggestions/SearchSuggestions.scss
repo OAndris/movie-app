@@ -1,4 +1,5 @@
 @use '../../assets/mixins';
+@use '../../assets/constants';
 
 .search-suggestions {
     margin-top: 0.75em;
@@ -14,6 +15,13 @@
         background-color: rgba(240, 240, 240, 0.5);
     }
 
+    position: relative;
+    .spinner {
+        position: absolute;
+        left: 50%;
+        transform: translate(calc(-50% - 1em), -0.5em);
+    }
+
     .list {
         list-style-type: none;
         min-height: 12em;
@@ -22,10 +30,10 @@
         @include mixins.mixin-fancy-scrollbar(lightgray, 8px);
     }
 
-    position: relative;
-    .spinner {
-        position: absolute;
-        left: 50%;
-        transform: translate(calc(-50% - 1em), -0.5em);
+    .bottom-message {
+        font-weight: bold;
+        padding: 0.5em;
+        border-top: 1px solid constants.$light-gray;
+        background-color: lighten(constants.$light-gray, 4%);
     }
 }
