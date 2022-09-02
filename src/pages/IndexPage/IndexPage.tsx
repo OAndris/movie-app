@@ -6,6 +6,7 @@ import { useFavorites } from '../../contexts/FavoritesContext';
 import Searchbox from '../../components/Searchbox/Searchbox';
 import Spinner from '../../components/Spinner/Spinner';
 import SearchSuggestions from '../../components/SearchSuggestions/SearchSuggestions';
+import { getMoviesByQuery } from '../../libs/requests';
 
 const INITIAL_MOVIES: Movie[] = [];
 
@@ -13,45 +14,29 @@ const IndexPage = () => {
     const [searchString, setSearchString] = useState(''); // implicit type definition based on the init value's type
     const [isFetching, setIsFetching] = useState(false);
     const [movies, setMovies] = useState(INITIAL_MOVIES);
-    const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
         if (searchString.length < MIN_CHAR_NUM_TO_AUTO_TRIGGER_FETCH) {
             setMovies(INITIAL_MOVIES);
         }
         if (searchString.length === 0) {
-            // Prevent suggestions being stuck if user deletes while the HTTP response is still pending:
-            clearTimeout(timer);
+            // If user deletes string while the HTTP response is still pending --> cancel request (i.e. stop fetching) to prevent showing outdated suggestions:
+            // TODO - actually prevent (and/or cancel) the request!
             setIsFetching(false);
         }
-    }, [searchString, timer]);
+    }, [searchString]);
 
-    const fetchMovies = (): void => {
+    const fetchMovies = async () => {
         setIsFetching(true);
-        setTimer(
-            setTimeout(() => {
-                setMovies([
-                    { id: 1, title: 'Abc' },
-                    { id: 2, title: 'Def' },
-                    { id: 3, title: 'Ghi' },
-                    { id: 4, title: 'Jkl' },
-                    { id: 5, title: 'Mno' },
-                    { id: 6, title: 'Mno' },
-                    { id: 7, title: 'Mno' },
-                    { id: 8, title: 'Mno' },
-                    { id: 9, title: 'Mno' },
-                    { id: 10, title: 'Mno' },
-                    { id: 11, title: 'Mno' },
-                ]); // TODO
-                setIsFetching(false);
-            }, 1500)
-        );
-    };
-
-    const { favorites, toggleIsFavorite } = useFavorites();
+        const movies = await getMoviesByQuery(searchString, 1);
+        setMovies(movies);
+        setIsFetching(false);
+    }; // TODO - the fetchMovies passed to SearchSuggestions sees the previous value of searchString
 
     const shouldShowSuggestions = movies.length > 0;
     const shouldShowSpinner = isFetching && !shouldShowSuggestions;
+
+    const { favorites, toggleIsFavorite } = useFavorites();
 
     return (
         <article className="index-page">

@@ -1,36 +1,35 @@
+import { useEffect, useState } from 'react';
 import './FavoritesPage.scss';
 import { useFavorites } from '../../contexts/FavoritesContext';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import routes from '../../pages/routes';
 import RouteLink from '../../components/RouteLink/RouteLink';
+import Spinner from '../../components/Spinner/Spinner';
+import { Movie } from '../../models/models';
+import { getMovieById } from '../../libs/requests';
 
-//====================================
-const movies = [
-    { id: 1, title: 'Abc' },
-    { id: 2, title: 'Def' },
-    { id: 3, title: 'Ghi' },
-    { id: 4, title: 'Jkl' },
-    { id: 5, title: 'Mno' },
-    { id: 6, title: 'Mno' },
-    { id: 7, title: 'Mno' },
-    { id: 8, title: 'Mno' },
-    { id: 9, title: 'Mno' },
-    { id: 10, title: 'Mno' },
-    { id: 11, title: 'Mno' },
-]; // TODO
-//====================================
+const INITIAL_MOVIES: Movie[] = [];
 
 const FavoritesPage = () => {
     const { favorites, toggleIsFavorite } = useFavorites();
+    const [isFetching, setIsFetching] = useState(true);
+    const [favoriteMovies, setFavoriteMovies] = useState(INITIAL_MOVIES);
 
-    const favoriteMovies = movies.filter((movie) =>
-        favorites.includes(movie.id)
-    );
+    useEffect(() => {
+        const fetchFavoriteMovies = async () => {
+            const promises = favorites.map((id: number) => getMovieById(id));
+            const favMoviesArray = await Promise.all(promises);
+            setFavoriteMovies(favMoviesArray);
+            setIsFetching(false);
+        };
+        fetchFavoriteMovies();
+    }, []);
 
     return (
         <article className="favorites-page">
             <h2>Your favorite movies</h2>
-            {favoriteMovies.length ? (
+            {isFetching && <Spinner />}
+            {favoriteMovies.length > 0 && (
                 <ul className="list">
                     {favoriteMovies.map((movie) => (
                         <MovieCard
@@ -41,7 +40,8 @@ const FavoritesPage = () => {
                         />
                     ))}
                 </ul>
-            ) : (
+            )}
+            {!isFetching && favoriteMovies.length === 0 && (
                 <p>It seems like you don't have any favorites yet!</p>
             )}
             <p>
