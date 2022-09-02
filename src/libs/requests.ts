@@ -65,7 +65,9 @@ function handleError(error: Error) {
     // - log errors (e.g. send them to an analytics endpoint)
     // - handle different status codes and error types, improve error handling for better UX
     alert(
-        `Something went wrong! Please contact us and include this error message: "${error.message}"`
+        error.message === 'Network Error'
+            ? 'You appear to be offline!'
+            : `Something went wrong! Please contact us and include this error message: "${error.message}"`
     );
 }
 //==================================================================
