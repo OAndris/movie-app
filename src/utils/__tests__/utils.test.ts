@@ -1,4 +1,24 @@
-import { mergeObjValuesToKeys, toggleElementInNumericArray } from '../utils';
+import {
+    convertMinutesToHoursAndMinutes,
+    mergeObjValuesToKeys,
+    toggleElementInNumericArray,
+} from '../utils';
+
+describe('convertMinutesToHoursAndMinutes', () => {
+    it('given a number representing less than 60 minutes, it returns a "MM min" formatted string', () => {
+        expect(convertMinutesToHoursAndMinutes(59)).toEqual('59 min');
+    });
+    it('given a number representing at least 60 minutes, it returns a "H h MM min" formatted string', () => {
+        expect(convertMinutesToHoursAndMinutes(60)).toEqual('1 h 0 min');
+        expect(convertMinutesToHoursAndMinutes(61)).toEqual('1 h 1 min');
+        expect(convertMinutesToHoursAndMinutes(95)).toEqual('1 h 35 min');
+        expect(convertMinutesToHoursAndMinutes(119)).toEqual('1 h 59 min');
+        expect(convertMinutesToHoursAndMinutes(120)).toEqual('2 h 0 min');
+        expect(convertMinutesToHoursAndMinutes(121)).toEqual('2 h 1 min');
+        expect(convertMinutesToHoursAndMinutes(150)).toEqual('2 h 30 min');
+        expect(convertMinutesToHoursAndMinutes(605)).toEqual('10 h 5 min');
+    });
+});
 
 describe('mergeObjValuesToKeys', () => {
     it('returns an object containing the keys from the input array, with corresponding values from the input object (and undefined for any missing key)', () => {

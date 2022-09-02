@@ -2,6 +2,7 @@ import './FavoriteMovie.scss';
 import { FavoriteMovieInterface } from '../../models/models';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 import Image from '../Image/Image';
+import { convertMinutesToHoursAndMinutes } from '../../utils/utils';
 
 interface Props {
     movie: FavoriteMovieInterface;
@@ -25,6 +26,8 @@ const FavoriteMovie: React.FC<Props> = ({
         imdb_id,
         poster_path,
     } = movie;
+    const year = release_date.slice(0, 4);
+    const readableTime = convertMinutesToHoursAndMinutes(runtime);
     const imdbLink = `https://www.imdb.com/title/${imdb_id}`;
     const imgBaseUrl = 'https://image.tmdb.org/t/p/w342'; // NOTE: for configuration (e.g. image sizes), see: https://api.themoviedb.org/3/configuration?api_key=SECRET
     return (
@@ -37,9 +40,7 @@ const FavoriteMovie: React.FC<Props> = ({
                 size="1.75em"
             />
             <p>{genres.map((genre) => genre.name).join(', ')}</p>
-            <p>{`${release_date} — ${runtime} min — ${vote_average.toFixed(
-                1
-            )}/10`}</p>
+            <p>{`${year} — ${readableTime} — ${vote_average.toFixed(1)}/10`}</p>
             <p>
                 {homepage ? (
                     <>

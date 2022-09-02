@@ -10,7 +10,7 @@ export interface FavoriteMovieInterface {
     id: number;
     title: string;
     overview: string;
-    runtime: string;
+    runtime: number;
     genres: Array<{
         id: number;
         name: string;
