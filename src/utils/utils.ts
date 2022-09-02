@@ -1,9 +1,9 @@
 // For documentation, see the corresponding unit tests.
 
-export const createSubsetOfObj = (
+export const mergeObjValuesToKeys = (
     obj: { [key: string]: unknown },
     usefulKeys: string[]
-) => {
+): { [key: string]: unknown } => {
     return usefulKeys.reduce((subsetObj, key) => {
         subsetObj[key] = obj[key];
         return subsetObj;
