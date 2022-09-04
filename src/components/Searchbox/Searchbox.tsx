@@ -6,7 +6,7 @@ import {
     MIN_CHAR_NUM_TO_AUTO_TRIGGER_FETCH,
 } from '../../constants/constants';
 import { useFavorites } from '../../contexts/FavoritesContext';
-import { useMoviesByQuery } from '../../libs/requests';
+import { useMoviesByQuery } from '../../api/requests/moviesByQuery';
 import SearchSuggestions from '../SearchSuggestions/SearchSuggestions';
 
 const Searchbox = () => {

@@ -5,7 +5,7 @@ import routes from '../../pages/routes';
 import RouteLink from '../../components/RouteLink/RouteLink';
 import Spinner from '../../components/Spinner/Spinner';
 import { FavoriteMovieInterface } from '../../models/models';
-import { getMovieById } from '../../libs/requests';
+import { getMovieById } from '../../api/requests/movieById';
 import FavoriteMovie from '../../components/FavoriteMovie/FavoriteMovie';
 
 const INITIAL_MOVIES: FavoriteMovieInterface[] = [];
