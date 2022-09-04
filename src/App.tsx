@@ -22,6 +22,7 @@ const App = () => {
                             path={routes.FavoritesPage.path}
                             element={<FavoritesPage />}
                         />
+                        <Route path="/*" element={<h2>Page Not Found</h2>} />
                     </Routes>
                 </FavoritesProvider>
             </main>
