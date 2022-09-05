@@ -3,7 +3,7 @@ import { useFavorites } from '../../contexts/FavoritesContext';
 import routes from '../../pages/routes';
 import RouteLink from '../../components/RouteLink/RouteLink';
 import Spinner from '../../components/Spinner/Spinner';
-import { useMoviesByIds } from '../../api/requests/useMoviesByIds';
+import { useMoviesByIds } from '../../api/requests/moviesByIds';
 import FavoriteMovie from '../../components/FavoriteMovie/FavoriteMovie';
 
 const FavoritesPage = () => {

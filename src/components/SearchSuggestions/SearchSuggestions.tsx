@@ -61,6 +61,7 @@ const SearchSuggestions: React.FC<Props> = ({
                         : `A total of ${totalResults} result(s) available.`}
                 </BottomMessage>
             )}
+            {isFetching && <BottomMessage>Loading...</BottomMessage>}
         </div>
     );
 };
