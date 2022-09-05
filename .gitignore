@@ -24,3 +24,6 @@ yarn-error.log*
 
 # custom
 TODO.md
+/cypress/e2e/tutorials
+/cypress/videos
+/cypress/screenshots

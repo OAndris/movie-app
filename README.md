@@ -28,7 +28,11 @@ Create a `.env.local` file inside the root folder (next to `package.json`) and p
 
 `yarn test-cov` - run unit tests (Jest) and generate coverage report
 
-`yarn e2e` - !!! TODO, NOT YET WORKING !!! - run E2E tests (Cypress)
+`yarn e2e` - run end-to-end tests (Cypress), launching an Electron app or a browser (optionally add `-chrome`, `-firefox`, or `-edge` to the end of the command)
+
+`yarn e2e-headless` - run end-to-end tests (Cypress) in a headless browser
+
+`yarn cypress` - open the Cypress app for greater control over the test execution (e.g. time traveling)
 
 **Security - check for vulnerabilities in dependencies:**
 
