@@ -28,6 +28,19 @@
         max-height: 26em;
         overflow-y: auto;
         @include mixins.mixin-fancy-scrollbar(lightgray, 8px);
+
+        .load-more-button {
+            cursor: pointer;
+            font-size: 0.875em;
+            margin: 2.5em auto 1.5em auto;
+            padding: 0.75em 1.5em;
+            border: 1px solid gray;
+            border-radius: 0.5em;
+            color: white;
+            $color: constants.$primary-color;
+            background-color: $color;
+            @include mixins.mixin-button-effect($color);
+        }
     }
 
     .bottom-message {

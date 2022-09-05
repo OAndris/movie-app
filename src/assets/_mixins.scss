@@ -14,3 +14,14 @@
         background: $color;
     }
 }
+
+@mixin mixin-button-effect($color) {
+    &:hover {
+        background-color: darken($color, 5%);
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    }
+    &:active {
+        background-color: darken($color, 10%);
+        transform: scale(0.97);
+    }
+}

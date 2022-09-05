@@ -6,6 +6,13 @@ export interface Movie {
     release_date: string;
 }
 
+export interface MoviesByQuery {
+    movies: Movie[];
+    page: number;
+    totalPages: number;
+    totalResults: number;
+}
+
 export interface FavoriteMovieInterface {
     id: number;
     title: string;

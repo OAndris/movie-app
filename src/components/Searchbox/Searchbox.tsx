@@ -21,9 +21,10 @@ const Searchbox = () => {
         error,
         data,
         isStale,
-    } = useMoviesByQuery(searchString, 1);
-
-    const { movies, totalResults } = data ?? {};
+        hasNextPage,
+        fetchNextPage,
+        isFetchingNextPage,
+    } = useMoviesByQuery(searchString);
 
     useEffect(() => {
         let debounceTimer: NodeJS.Timeout;
@@ -72,10 +73,12 @@ const Searchbox = () => {
                     isFetching={isFetching}
                     isError={isError}
                     error={error}
-                    data={movies}
-                    totalResults={totalResults}
+                    data={data}
                     favorites={favorites}
                     toggleIsFavorite={toggleIsFavorite}
+                    hasNextPage={hasNextPage}
+                    fetchNextPage={fetchNextPage}
+                    isFetchingNextPage={isFetchingNextPage}
                 />
             )}
         </div>
