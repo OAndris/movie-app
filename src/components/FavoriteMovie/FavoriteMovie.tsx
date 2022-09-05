@@ -20,16 +20,19 @@ const FavoriteMovie: React.FC<Props> = ({
         overview,
         runtime,
         genres,
-        release_date,
-        vote_average,
+        releaseDate,
+        voteAverage,
         homepage,
-        imdb_id,
-        poster_path,
+        imdbId,
+        posterPath,
     } = movie;
-    const year = release_date.slice(0, 4);
+
+    const readableGenres = genres.map((genre) => genre.name).join(', ');
+    const year = releaseDate.slice(0, 4);
     const readableTime = convertMinutesToHoursAndMinutes(runtime);
-    const imdbLink = `https://www.imdb.com/title/${imdb_id}`;
+    const imdbLink = `https://www.imdb.com/title/${imdbId}`;
     const imgBaseUrl = 'https://image.tmdb.org/t/p/w342'; // NOTE: for configuration (e.g. image sizes), see: https://api.themoviedb.org/3/configuration?api_key=SECRET
+
     return (
         <div className="favorite-movie">
             <h3 className="title">{title}</h3>
@@ -39,8 +42,8 @@ const FavoriteMovie: React.FC<Props> = ({
                 className="icon"
                 size="1.75em"
             />
-            <p>{genres.map((genre) => genre.name).join(', ')}</p>
-            <p>{`${year} — ${readableTime} — ${vote_average.toFixed(1)}/10`}</p>
+            <p>{readableGenres}</p>
+            <p>{`${year} — ${readableTime} — ${voteAverage.toFixed(1)}/10`}</p>
             <p>
                 {homepage ? (
                     <>
@@ -53,7 +56,7 @@ const FavoriteMovie: React.FC<Props> = ({
                 )}
             </p>
             <Image
-                src={`${imgBaseUrl}${poster_path}`}
+                src={`${imgBaseUrl}${posterPath}`}
                 alt={`Poster of the movie "${title}"`}
                 className="poster"
             />

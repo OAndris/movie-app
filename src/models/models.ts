@@ -15,11 +15,11 @@ export interface FavoriteMovieInterface {
         id: number;
         name: string;
     }>;
-    release_date: string;
-    vote_average: number;
+    releaseDate: string;
+    voteAverage: number;
     homepage: string;
-    imdb_id: number;
-    poster_path: string;
+    imdbId: number;
+    posterPath: string;
 }
 
 export interface Route {
