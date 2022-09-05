@@ -1,20 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './App.scss';
+import { FavoritesProvider } from './contexts/FavoritesContext';
+import { CustomQueryClient } from './api/CustomQueryClient';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import routes from './pages/routes';
 import IndexPage from './pages/IndexPage/IndexPage';
 import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
-import { FavoritesProvider } from './contexts/FavoritesContext';
-
-const queryClient = new QueryClient({
-    defaultOptions: {
-        queries: {
-            refetchOnWindowFocus: false,
-        },
-    },
-});
 
 const App = () => {
     return (
@@ -22,7 +14,7 @@ const App = () => {
             <Header />
             <main id="main">
                 <FavoritesProvider>
-                    <QueryClientProvider client={queryClient}>
+                    <CustomQueryClient devtools={false}>
                         <Routes>
                             <Route
                                 path={routes.IndexPage.path}
@@ -37,7 +29,7 @@ const App = () => {
                                 element={<h2>Page Not Found</h2>}
                             />
                         </Routes>
-                    </QueryClientProvider>
+                    </CustomQueryClient>
                 </FavoritesProvider>
             </main>
             <Footer />

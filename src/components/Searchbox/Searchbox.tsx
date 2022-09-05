@@ -20,17 +20,18 @@ const Searchbox = () => {
         isError,
         error,
         data,
+        isStale,
     } = useMoviesByQuery(searchString, 1);
 
     const { movies, totalResults } = data ?? {};
 
     useEffect(() => {
         let debounceTimer: NodeJS.Timeout;
-        if (!isTooShortQuery) {
+        if (!isTooShortQuery && isStale) {
             debounceTimer = setTimeout(fetchMovies, DEBOUNCE_TIME_IN_MS);
         }
         return () => clearTimeout(debounceTimer);
-    }, [searchString, isTooShortQuery, fetchMovies]);
+    }, [searchString, isTooShortQuery, isStale, fetchMovies]);
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchString(e.target.value);

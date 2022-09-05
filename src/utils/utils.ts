@@ -23,3 +23,5 @@ export const toggleElementInNumericArray = (
         ? array.filter((currentId) => currentId !== id)
         : array.concat(id);
 };
+
+export const minutesToMs = (minutes: number) => minutes * 60 * 1000;
