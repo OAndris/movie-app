@@ -1,4 +1,4 @@
-export interface Movie {
+export interface MovieInterface {
     id: number;
     title: string;
     overview: string;
@@ -6,14 +6,14 @@ export interface Movie {
     release_date: string;
 }
 
-export interface MoviesByQuery {
-    movies: Movie[];
+export interface MoviesByQueryInterface {
+    movies: MovieInterface[];
     page: number;
     totalPages: number;
     totalResults: number;
 }
 
-export interface FavoriteMovieInterface {
+export interface DetailedMovieInterface {
     id: number;
     title: string;
     overview: string;
@@ -29,7 +29,7 @@ export interface FavoriteMovieInterface {
     posterPath: string;
 }
 
-export interface Route {
+export interface RouteInterface {
     path: string;
     title: string;
 }

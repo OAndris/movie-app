@@ -1,7 +1,7 @@
-import { Route } from '../models/models';
+import { RouteInterface } from '../models/models';
 
 interface Routes {
-    [key: string]: Route;
+    [key: string]: RouteInterface;
 }
 
 const routes: Routes = {

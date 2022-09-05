@@ -1,11 +1,11 @@
 import './FavoriteMovie.scss';
-import { FavoriteMovieInterface } from '../../models/models';
+import { DetailedMovieInterface } from '../../models/models';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 import Image from '../Image/Image';
 import { convertMinutesToHoursAndMinutes } from '../../utils/utils';
 
 interface Props {
-    movie: FavoriteMovieInterface;
+    movie: DetailedMovieInterface;
     isFavorite: boolean;
     toggleIsFavorite: () => void;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { AxiosError } from 'axios';
 import './SearchSuggestions.scss';
 import { MIN_CHAR_NUM_TO_AUTO_TRIGGER_FETCH } from '../../constants/constants';
-import { Movie, MoviesByQuery } from '../../models/models';
+import { MovieInterface, MoviesByQueryInterface } from '../../models/models';
 import MovieCard from '../MovieCard/MovieCard';
 import Spinner from '../Spinner/Spinner';
 
@@ -11,7 +11,7 @@ interface Props {
     isFetching: boolean;
     isError: boolean;
     error: AxiosError | {};
-    data: { pages: MoviesByQuery[]; pageParams: unknown[] };
+    data: { pages: MoviesByQueryInterface[]; pageParams: unknown[] };
     favorites: number[];
     toggleIsFavorite: (id: number) => void;
     hasNextPage: boolean;
@@ -48,7 +48,7 @@ const SearchSuggestions: React.FC<Props> = ({
                 {!isTooShortQuery &&
                     data?.pages.map((page, i) => (
                         <React.Fragment key={i}>
-                            {page.movies.map((movie: Movie) => (
+                            {page.movies.map((movie: MovieInterface) => (
                                 <MovieCard
                                     key={movie.id}
                                     movie={movie}

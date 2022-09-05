@@ -1,11 +1,11 @@
 import { useQueries } from '@tanstack/react-query';
 import { tmdbAPI, endpoints } from '../api';
-import { FavoriteMovieInterface } from '../../models/models';
+import { DetailedMovieInterface } from '../../models/models';
 
 const fetchMovieById = async (urlPath: string) => {
     // Example: https://api.themoviedb.org/3/movie/181808?api_key=SECRET
     const { data } = await tmdbAPI.get(urlPath);
-    const movie: FavoriteMovieInterface = {
+    const movie: DetailedMovieInterface = {
         id: data.id,
         title: data.title,
         overview: data.overview,

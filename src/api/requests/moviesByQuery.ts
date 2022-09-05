@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { tmdbAPI, endpoints } from '../api';
-import { Movie, MoviesByQuery } from '../../models/models';
+import { MovieInterface, MoviesByQueryInterface } from '../../models/models';
 import { mergeObjValuesToKeys } from '../../utils/utils';
 
 const { queryId, urlPath } = endpoints.moviesByQuery;
@@ -13,8 +13,8 @@ const fetchMoviesByQuery = async ({ queryKey, pageParam = 1 }) => {
     };
     const { data } = await tmdbAPI.get(urlPath, { params });
     const keys = ['id', 'title', 'overview', 'vote_average', 'release_date'];
-    const result: MoviesByQuery = {
-        movies: data.results.map((movie: Movie) => {
+    const result: MoviesByQueryInterface = {
+        movies: data.results.map((movie: MovieInterface) => {
             return mergeObjValuesToKeys(movie, keys);
         }),
         page: data.page,

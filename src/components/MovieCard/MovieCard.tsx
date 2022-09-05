@@ -1,10 +1,10 @@
 import React from 'react';
 import './MovieCard.scss';
-import { Movie } from '../../models/models';
+import { MovieInterface } from '../../models/models';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 
 interface Props {
-    movie: Movie;
+    movie: MovieInterface;
     isFavorite: boolean;
     toggleIsFavorite: () => void;
 }
