@@ -26,6 +26,7 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "start-prod": "yarn build && serve -s build",
+        "tests": "echo '********** UNIT TESTS **********' && yarn test --watchAll=false && echo '********** END-TO-END TESTS **********' && yarn e2e-headless",
         "test": "react-scripts test",
         "test-cov": "yarn test --coverage --watchAll=false && start coverage/lcov-report/index.html",
         "e2e": "cypress run --spec 'cypress/e2e/*cy.ts' --headed --no-exit",

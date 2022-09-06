@@ -22,6 +22,8 @@ Create a `.env.local` file inside the root folder (next to `package.json`) and p
 
 **Testing:**
 
+`yarn tests` - run all tests of all levels (unit and component tests + E2E tests)
+
 `yarn test` - run all unit tests and UI Component tests (Jest + Jest-DOM)
 
 `yarn test {fileName}` - run a specific test file, e.g. `utils.test.ts` with `yarn test utils` (or `Header.test.tsx` with `yarn test Header`)
