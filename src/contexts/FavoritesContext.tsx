@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { useLocalStorage } from '../hooks/customHooks';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import { toggleElementInNumericArray } from '../utils/utils';
 
 const FavoritesContext = createContext(null);

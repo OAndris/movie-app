@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AiOutlineSearch, AiFillCaretRight } from 'react-icons/ai';
 import './Searchbox.scss';
 import {
     DEBOUNCE_TIME_IN_MS,
     MIN_CHAR_NUM_TO_AUTO_TRIGGER_FETCH,
 } from '../../constants/constants';
+import { useInAndOutClickHandlers } from '../../hooks/useInAndOutClickHandlers';
 import { useFavorites } from '../../contexts/FavoritesContext';
 import { useMoviesByQuery } from '../../api/requests/moviesByQuery';
 import SearchSuggestions from '../SearchSuggestions/SearchSuggestions';
@@ -36,6 +37,7 @@ const Searchbox = () => {
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchString(e.target.value);
+        setCanShowSuggestions(true); // to restore after click-out & refocus by tab
     };
 
     const onFormSubmit = (e: React.FormEvent) => {
@@ -45,10 +47,18 @@ const Searchbox = () => {
         }
     };
 
+    const [canShowSuggestions, setCanShowSuggestions] = useState(false);
+    const searchBoxRef = useRef(null);
+    useInAndOutClickHandlers(
+        searchBoxRef,
+        () => setCanShowSuggestions(true),
+        () => setCanShowSuggestions(false)
+    );
+
     const { favorites, toggleIsFavorite } = useFavorites();
 
     return (
-        <div className="searchbox">
+        <div className="searchbox" ref={searchBoxRef}>
             <form className="search-form" onSubmit={(e) => onFormSubmit(e)}>
                 <AiOutlineSearch className="search-icon" />
                 <input
@@ -67,7 +77,7 @@ const Searchbox = () => {
                     <AiFillCaretRight />
                 </button>
             </form>
-            {searchString.length > 0 && (
+            {searchString.length > 0 && canShowSuggestions && (
                 <SearchSuggestions
                     isTooShortQuery={isTooShortQuery}
                     isFetching={isFetching}
