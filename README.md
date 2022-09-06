@@ -2,7 +2,7 @@
 
 Please refer to the "Quick Guide" section of this README file for every necessary information to run the code and tests.
 
-Please note that in case of a real application, the (TMDB) API key should be moved to server-side code (it's not safe on the client-side).
+Please note that in case of a real application, the (TMDB) API key should be moved to server-side code.
 
 ## Quick Guide:
 
