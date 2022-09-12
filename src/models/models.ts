@@ -29,7 +29,11 @@ export interface DetailedMovieInterface {
     posterPath: string;
 }
 
-export interface RouteInterface {
+export interface RouteLinkInterface {
     path: string;
     title: string;
+}
+
+export interface RouteInterface extends RouteLinkInterface {
+    element: JSX.Element;
 }

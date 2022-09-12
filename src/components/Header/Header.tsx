@@ -3,11 +3,11 @@ import { useLocation } from 'react-router-dom';
 import './Header.scss';
 import Popcorn from '../../assets/popcorn.svg';
 import routes from '../../pages/routes';
-import { RouteInterface } from '../../models/models';
+import { RouteLinkInterface } from '../../models/models';
 import RouteLink from '../RouteLink/RouteLink';
 import Image from '../Image/Image';
 
-const RouteItem: React.FC<RouteInterface> = ({ path, title }) => {
+const RouteItem: React.FC<RouteLinkInterface> = ({ path, title }) => {
     const isActive = path === useLocation().pathname;
     return (
         <li className="route-item">
