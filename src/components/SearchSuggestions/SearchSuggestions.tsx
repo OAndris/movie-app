@@ -53,7 +53,7 @@ const SearchSuggestions: React.FC<Props> = ({
         if (shouldLoadMore) {
             fetchNextPage();
         }
-    }, [shouldLoadMore]);
+    }, [shouldLoadMore, fetchNextPage]);
 
     return (
         <div className={'search-suggestions' + (isFetching ? ' loading' : '')}>
