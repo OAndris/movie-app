@@ -5,6 +5,7 @@
 
 const searchbox = 'input[type=search]';
 const submitButton = 'button[type=submit]';
+const searchSuggestionList = '.search-suggestions .list';
 const searchSuggestionItems = '.search-suggestions li';
 
 describe('UI elements properly render and work, including navigation', () => {
@@ -81,11 +82,11 @@ describe('searchbox works properly, including automatic triggering and paginatio
         cy.get(searchbox).clear();
     });
 
-    it('pagination works, more movies can be loaded by clicking on a button', () => {
+    it('pagination works, more movies are loaded automatically upon scrolling down', () => {
         cy.get(searchbox).clear();
         cy.get(searchbox).type('123').should('have.value', '123');
         cy.get(searchSuggestionItems).should('have.length', resultsPerPage);
-        cy.get('button.load-more-button').click();
+        cy.get(searchSuggestionList).scrollTo('bottom');
         cy.get(searchSuggestionItems).should('have.length', 2 * resultsPerPage);
         cy.get(searchbox).clear();
     });

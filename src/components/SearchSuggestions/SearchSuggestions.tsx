@@ -45,7 +45,7 @@ const SearchSuggestions: React.FC<Props> = ({
     const onScroll = throttle((e: React.UIEvent<HTMLUListElement, UIEvent>) => {
         const { scrollHeight, scrollTop, clientHeight } =
             e.target as HTMLElement;
-        const offset = 150;
+        const offset = 250;
         const isNearBottom = scrollTop + clientHeight + offset >= scrollHeight;
         if (isNearBottom && hasNextPage) {
             setShouldLoadMore(true);
