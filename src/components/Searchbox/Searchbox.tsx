@@ -7,7 +7,7 @@ import {
 } from '../../constants/constants';
 import { useInAndOutClickHandlers } from '../../hooks/useInAndOutClickHandlers';
 import { useFavorites } from '../../contexts/FavoritesContext';
-import { useMoviesByQuery } from '../../api/requests/moviesByQuery';
+import { useMoviesByQuery } from '../../api/api';
 import SearchSuggestions from '../SearchSuggestions/SearchSuggestions';
 
 const Searchbox = () => {
