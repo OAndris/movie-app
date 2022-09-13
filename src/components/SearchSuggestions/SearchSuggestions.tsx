@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { AxiosError } from 'axios';
+import { throttle } from 'lodash';
 import './SearchSuggestions.scss';
-import { MIN_CHAR_NUM_TO_AUTO_TRIGGER_FETCH } from '../../constants/constants';
+import {
+    MIN_CHAR_NUM_TO_AUTO_TRIGGER_FETCH,
+    THROTTLE_TIME_IN_MS,
+} from '../../constants/constants';
 import { MovieInterface, MoviesByQueryInterface } from '../../models/models';
 import MovieCard from '../MovieCard/MovieCard';
 import Spinner from '../Spinner/Spinner';
@@ -38,7 +42,7 @@ const SearchSuggestions: React.FC<Props> = ({
     const totalResults = data?.pages[0].totalResults;
 
     const [shouldLoadMore, setShouldLoadMore] = useState(false);
-    const onScroll = (e: React.UIEvent<HTMLUListElement, UIEvent>) => {
+    const onScroll = throttle((e: React.UIEvent<HTMLUListElement, UIEvent>) => {
         const { scrollHeight, scrollTop, clientHeight } =
             e.target as HTMLElement;
         const offset = 150;
@@ -48,7 +52,7 @@ const SearchSuggestions: React.FC<Props> = ({
         } else {
             setShouldLoadMore(false);
         }
-    };
+    }, THROTTLE_TIME_IN_MS);
     useEffect(() => {
         if (shouldLoadMore) {
             fetchNextPage();
