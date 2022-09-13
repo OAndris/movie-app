@@ -1,5 +1,5 @@
 import './FavoriteMovie.scss';
-import { DetailedMovieInterface } from '../../models/models';
+import { DetailedMovieInterface } from '../../interfaces/interfaces';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 import Image from '../Image/Image';
 import { convertMinutesToHoursAndMinutes } from '../../utils/utils';

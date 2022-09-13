@@ -6,7 +6,10 @@ import {
     MIN_CHAR_NUM_TO_AUTO_TRIGGER_FETCH,
     THROTTLE_TIME_IN_MS,
 } from '../../constants/constants';
-import { MovieInterface, MoviesByQueryInterface } from '../../models/models';
+import {
+    MovieInterface,
+    MoviesByQueryInterface,
+} from '../../interfaces/interfaces';
 import MovieCard from '../MovieCard/MovieCard';
 import Spinner from '../Spinner/Spinner';
 

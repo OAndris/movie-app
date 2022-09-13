@@ -18,10 +18,10 @@ export interface DetailedMovieInterface {
     title: string;
     overview: string;
     runtime: number;
-    genres: Array<{
+    genres: {
         id: number;
         name: string;
-    }>;
+    }[];
     releaseDate: string;
     voteAverage: number;
     homepage: string;

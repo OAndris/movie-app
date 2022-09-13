@@ -1,4 +1,4 @@
-import { RouteInterface } from '../models/models';
+import { RouteInterface } from '../interfaces/interfaces';
 import IndexPage from './IndexPage/IndexPage';
 import FavoritesPage from './FavoritesPage/FavoritesPage';
 

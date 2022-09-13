@@ -4,7 +4,7 @@ import {
     MovieInterface,
     MoviesByQueryInterface,
     DetailedMovieInterface,
-} from '../models/models';
+} from '../interfaces/interfaces';
 import { mergeObjValuesToKeys } from '../utils/utils';
 
 const api_key = process.env.REACT_APP_TMDB_API_KEY; // CAUTION: this is not safe, the API key should be stored in server-side code (in case of a more serious application)

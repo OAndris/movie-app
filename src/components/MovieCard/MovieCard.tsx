@@ -1,6 +1,6 @@
 import React from 'react';
 import './MovieCard.scss';
-import { MovieInterface } from '../../models/models';
+import { MovieInterface } from '../../interfaces/interfaces';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 
 interface Props {

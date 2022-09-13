@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import './Header.scss';
 import Popcorn from '../../assets/popcorn.svg';
 import routes from '../../pages/routes';
-import { RouteLinkInterface } from '../../models/models';
+import { RouteLinkInterface } from '../../interfaces/interfaces';
 import RouteLink from '../RouteLink/RouteLink';
 import Image from '../Image/Image';
 
