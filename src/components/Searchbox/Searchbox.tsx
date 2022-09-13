@@ -24,7 +24,6 @@ const Searchbox = () => {
         isStale,
         hasNextPage,
         fetchNextPage,
-        isFetchingNextPage,
     } = useMoviesByQuery(searchString);
 
     useEffect(() => {
@@ -88,7 +87,6 @@ const Searchbox = () => {
                     toggleIsFavorite={toggleIsFavorite}
                     hasNextPage={hasNextPage}
                     fetchNextPage={fetchNextPage}
-                    isFetchingNextPage={isFetchingNextPage}
                 />
             )}
         </div>

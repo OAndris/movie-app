@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { AxiosError } from 'axios';
 import './SearchSuggestions.scss';
 import { MIN_CHAR_NUM_TO_AUTO_TRIGGER_FETCH } from '../../constants/constants';
@@ -16,7 +16,6 @@ interface Props {
     toggleIsFavorite: (id: number) => void;
     hasNextPage: boolean;
     fetchNextPage: () => void;
-    isFetchingNextPage: boolean;
 }
 
 const SearchSuggestions: React.FC<Props> = ({
@@ -29,22 +28,37 @@ const SearchSuggestions: React.FC<Props> = ({
     toggleIsFavorite,
     hasNextPage,
     fetchNextPage,
-    isFetchingNextPage,
 }) => {
     const showLoading = !isTooShortQuery && isFetching;
     const showWarning = isTooShortQuery;
     const showError =
         isError && typeof error === 'object' && 'message' in error;
     const showTotalResults = !isTooShortQuery && !isFetching && !showError; // && Array.isArray(data);
-    const showLoadMoreButton =
-        !isTooShortQuery && data?.pages.length > 0 && hasNextPage;
 
     const totalResults = data?.pages[0].totalResults;
+
+    const [shouldLoadMore, setShouldLoadMore] = useState(false);
+    const onScroll = (e: React.UIEvent<HTMLUListElement, UIEvent>) => {
+        const { scrollHeight, scrollTop, clientHeight } =
+            e.target as HTMLElement;
+        const offset = 150;
+        const isNearBottom = scrollTop + clientHeight + offset >= scrollHeight;
+        if (isNearBottom && hasNextPage) {
+            setShouldLoadMore(true);
+        } else {
+            setShouldLoadMore(false);
+        }
+    };
+    useEffect(() => {
+        if (shouldLoadMore) {
+            fetchNextPage();
+        }
+    }, [shouldLoadMore]);
 
     return (
         <div className={'search-suggestions' + (isFetching ? ' loading' : '')}>
             {showLoading && <Spinner className="spinner" />}
-            <ul className="list">
+            <ul className="list" onScroll={onScroll}>
                 {!isTooShortQuery &&
                     data?.pages.map((page, i) => (
                         <React.Fragment key={i}>
@@ -60,15 +74,6 @@ const SearchSuggestions: React.FC<Props> = ({
                             ))}
                         </React.Fragment>
                     ))}
-                {showLoadMoreButton && (
-                    <button
-                        className="load-more-button"
-                        onClick={fetchNextPage}
-                        disabled={isFetchingNextPage}
-                    >
-                        Load More
-                    </button>
-                )}
             </ul>
             {showWarning && (
                 <BottomMessage>
